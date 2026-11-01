@@ -5,7 +5,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
 
 const baseConfig = {
-    // Меняем расширение точки входа на .ts
     entry: path.resolve(__dirname, './src/index.ts'),
     mode: 'development',
     module: {
@@ -14,7 +13,6 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
-            // Добавляем правило для обработки TypeScript файлов через ts-loader
             {
                 test: /\.ts$/,
                 use: 'ts-loader',
@@ -23,12 +21,12 @@ const baseConfig = {
         ],
     },
     resolve: {
-        // Добавляем .ts в разрешенные расширения, чтобы импорты работали без указания расширения
         extensions: ['.ts', '.js'],
     },
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
+        publicPath: './',
     },
     plugins: [
         new DotenvWebpackPlugin(),
