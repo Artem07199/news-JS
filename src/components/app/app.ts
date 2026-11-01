@@ -41,6 +41,7 @@ class App {
         });
 
         this.initSourcesScroll();
+        this.initScrollTop();
     }
 
     private initSourcesScroll(): void {
@@ -65,13 +66,35 @@ class App {
         sources.addEventListener(
             'wheel',
             (e: WheelEvent): void => {
-                if (e.deltaY !== 0) {
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
                     e.preventDefault();
                     sources.scrollLeft += e.deltaY;
                 }
             },
             { passive: false }
         );
+    }
+
+    private initScrollTop(): void {
+        const scrollBtn = document.querySelector<HTMLButtonElement>('#scrollTopBtn');
+        if (!scrollBtn) {
+            return;
+        }
+
+        window.addEventListener('scroll', (): void => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('scroll-top-btn_visible');
+            } else {
+                scrollBtn.classList.remove('scroll-top-btn_visible');
+            }
+        });
+
+        scrollBtn.addEventListener('click', (): void => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        });
     }
 }
 

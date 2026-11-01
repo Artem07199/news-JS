@@ -1,6 +1,9 @@
 import { NewsArticle } from '../../../types/types';
 import './news.css';
 
+const PLACEHOLDER_IMG =
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23e0e0e0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' fill='%23888888'%3ENo Image%3C/text%3E%3C/svg%3E";
+
 class News {
     public draw(data: ReadonlyArray<NewsArticle>): void {
         const news: ReadonlyArray<NewsArticle> =
@@ -29,7 +32,7 @@ class News {
             }
 
             if (photoElement) {
-                photoElement.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+                photoElement.style.backgroundImage = `url("${item.urlToImage || PLACEHOLDER_IMG}")`;
             }
 
             if (authorElement) {
