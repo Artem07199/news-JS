@@ -11,14 +11,24 @@
             <h1>News Portal</h1>
         </header>
         <main>
-            <div class="sources buttons"></div>
+<div class="sources-wrapper">
+    <button class="sources-nav-btn prev" id="sourcesPrev" aria-label="Предыдущие источники">‹</button>
+    <div class="sources buttons"></div>
+    <button class="sources-nav-btn next" id="sourcesNext" aria-label="Следующие источники">›</button>
+</div>
             <div class="news"></div>
         </main>
-        <footer>
-            <p class="copyright">
-                Copyright <a href="https://newsapi.org">NewsAPI</a>
-            </p>
-        </footer>
+<footer class="footer">
+    <div class="footer__container">
+        <a href="https://github.com/Artem07199" target="_blank" rel="noopener noreferrer" class="footer__github">
+            GitHub
+        </a>
+        <span class="footer__year">2026</span>
+        <a href="https://rs.school/courses/javascript" target="_blank" rel="noopener noreferrer" class="footer__rs">
+            <img src="https://app.rs.school/static/images/logo-rsschool3.png" alt="RS School" class="footer__logo">
+        </a>
+    </div>
+</footer>
 
         <template id="sourceItemTemp">
             <div class="source__item">
@@ -45,5 +55,6 @@
                 </div>
             </div>
         </template>
+        <button class="scroll-top-btn" id="scrollTopBtn" type="button" aria-label="Наверх">↑</button>
     </body>
 </html>
